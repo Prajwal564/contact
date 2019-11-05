@@ -4,17 +4,26 @@ import { Consumer } from "../context";
 
 
 class contact extends Component {
-    state ={
-    showList : false
-    };
+    constructor(props){
+        super(props);
+        this.state ={
+            showList : false
+        };
+    }
     onclickHandler = () =>{
         this.setState({showList : !this.state.showList});
     };
-    onDeleteClick =(id, dispatch) =>{
-        dispatch({type : 'DELETE_CONTACT' , payload : id});
+    onDeleteClick = (id, dispatch) => {
+        console.log('here', id);
+
+        dispatch({
+            type : 'DELETE_CONTACT' ,
+            payload : id
+        });
     };
   render() {
-    const { id,name, email, phone } = this.props;
+    const { id ,name, email, phone } = this.props;
+
     const { showList} = this.state;
 
     return(
